@@ -26,7 +26,7 @@ if ($q) {
     foreach ($json['responseData']['results'] as $item) {
         $search .= "<div><a target='_blank' href='{$item['unescapedUrl']}'>{$item['title']}</a><br />{$item['url']}<br />{$item['titleNoFormatting']}<br />{$item['content']}<br />{$item['title']}</div>";
     }
-    $resultStats = $json['responseData']['results'] . ' results';
+    $resultStats = $json['responseData']['cursor']['resultCount'] . ' results';
 }
 
 ?>
