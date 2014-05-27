@@ -39,6 +39,14 @@ if ($q) {
                 color: #545454;
                 font-size: 13px;
             }
+            #logo {
+                position: relative;
+            }
+            #resultStats {
+                position: absolute;
+                left: 200px;
+                top: 20px;
+            }
             #pages {
                 padding: 30px 0 100px 50px;
             }
@@ -51,14 +59,16 @@ if ($q) {
     </head>
     <body>
     <div style="margin:18px 0 0 20px">
-        <div><a href="./"><img src="logo.gif" style="width:150px; height:55px; border:0;"/></a></div>
+        <div id="logo">
+            <a href="./"><img src="logo.gif" style="width:150px; height:55px; border:0;"/></a>
+            <div id="resultStats" style="left:0px;"><?php echo $resultStats; ?></div>
+        </div>
         <div style="margin:8px 0 12px 0;">
             <form method="get" action="index.php">
                 <input type="text" name="q" style="height:32px; width:400px; line-height:30px"
                        value="<?php echo $qv; ?>"/>&nbsp;<input type="submit" style="height:32px;" value=" Google搜索 "/>
             </form>
         </div>
-        <div id="resultStats" style="left:0px;"><?php echo $resultStats; ?></div>
         <div id="search"><?php echo $search; ?></div>
         <div id="pages">
             <?php
