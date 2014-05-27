@@ -24,7 +24,7 @@ if ($q) {
     $json = json_decode($str, true);
     $search = '';
     foreach ($json['responseData']['results'] as $item) {
-        $search .= "<div><a target='_blank' href='{$item['unescapedUrl']}'>{$item['title']}</a>{$item['url']}<br />{$item['content']}|{$item['titleNoFormatting']}<br />&nbsp;</div>";
+        $search .= "<div><a target='_blank' href='{$item['unescapedUrl']}'>{$item['title']}</a> {$item['url']}<br />{$item['content']}|{$item['titleNoFormatting']}<br />&nbsp;</div>";
     }
     $resultStats = $json['responseData']['cursor']['resultCount'] . ' results';
 }
@@ -47,11 +47,14 @@ if ($q) {
                 left: 200px;
                 top: 20px;
             }
+            #search {
+                width: 650px;
+            }
             #pages {
                 padding: 30px 0 100px 50px;
             }
-
             #pages a {
+                font-size: 18px;
                 margin-right: 20px;
                 height: 20px;
             }
@@ -61,7 +64,7 @@ if ($q) {
     <div style="margin:18px 0 0 20px">
         <div id="logo">
             <a href="./"><img src="logo.gif" style="width:150px; height:55px; border:0;"/></a>
-            <div id="resultStats" style="left:0px;"><?php echo $resultStats; ?></div>
+            <div id="resultStats"><?php echo $resultStats; ?></div>
         </div>
         <div style="margin:8px 0 12px 0;">
             <form method="get" action="index.php">
