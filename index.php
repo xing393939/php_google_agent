@@ -24,7 +24,7 @@ if ($q) {
     $json = json_decode($str, true);
     $search = '';
     foreach ($json['responseData']['results'] as $item) {
-        $search .= "<div><a target='_blank' href='{$item['unescapedUrl']}'>{$item['title']}</a><br />{$item['url']}<br />{$item['titleNoFormatting']}<br />{$item['content']}<br />{$item['title']}</div>";
+        $search .= "<div><a target='_blank' href='{$item['unescapedUrl']}'>{$item['title']}</a>{$item['url']}<br />{$item['content']}|{$item['titleNoFormatting']}<br />&nbsp;</div>";
     }
     $resultStats = $json['responseData']['cursor']['resultCount'] . ' results';
 }
