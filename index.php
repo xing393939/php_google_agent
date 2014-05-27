@@ -34,14 +34,20 @@ if ($q) {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title><?php echo $qv; ?> Google搜索</title>
-        <style type="text/css">#pages {
+        <style type="text/css">
+            body {
+                color: #545454;
+                font-size: 13px;
+            }
+            #pages {
                 padding: 30px 0 100px 50px;
             }
 
             #pages a {
                 margin-right: 20px;
                 height: 20px;
-            }</style>
+            }
+        </style>
     </head>
     <body>
     <div style="margin:18px 0 0 20px">
