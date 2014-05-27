@@ -12,30 +12,30 @@ $qv = urldecode($q);
 $start = isset($_GET['start']) ? $_GET['start'] : 0;
 $search = $resultStats = '';
 if($q) {
-        include('simple_html_dom.php');
-        $url = 'http://www.google.com/search?hl=zh-CN&q=';
-        $ch = curl_init();
-        $timeout = 5;
-        curl_setopt ($ch, CURLOPT_URL, $url . $q . '&start=' . $start);
-        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en; rv:1.9.2) Gecko/20100115 Firefox/3.6 GTBDFff GTB7.0');
-        curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-        $str = curl_exec($ch);
-        curl_close($ch);
-        $html = str_get_html($str);
-        foreach($html->find('img') as $e) {
-                $e->outertext = '';
-        }
-        $e = $html->find('table.nrgt', 0);
+    include('simple_html_dom.php');
+    $url = 'http://www.google.com/search?hl=zh-CN&q=';
+    $ch = curl_init();
+    $timeout = 5;
+    curl_setopt ($ch, CURLOPT_URL, $url . $q . '&start=' . $start);
+    curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en; rv:1.9.2) Gecko/20100115 Firefox/3.6 GTBDFff GTB7.0');
+    curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+    $str = curl_exec($ch);
+    curl_close($ch);
+    var_dump($str);
+    $html = str_get_html($str);
+    foreach($html->find('img') as $e) {
         $e->outertext = '';
-        $search = $html->find('div#search', 0)->innertext;      
-        //$search = preg_replace('/onmousedown="[^"]+"/', 'target="_blank"', $search);
+    }
+    $e = $html->find('table.nrgt', 0);
+    $e->outertext = '';
+    $search = $html->find('div#search', 0)->innertext;
     $search = str_replace('<a ', '<a target="_blank" ', $search);
     $search = str_replace('href="/url?q=', 'href="', $search);
     $search = str_replace('href="/search?q=', 'href="http://www.g.cn/search?q=', $search);
     $search = preg_replace('/&amp;sa=U&amp;[^"]+/', '', $search);
     $search = preg_replace('/href="([^"]+)"/e', "durldecode('\\1')", $search);
-        $resultStats = $html->find('div#resultStats', 0)->innertext;
+    $resultStats = $html->find('div#resultStats', 0)->innertext;
 }
 function durldecode($str) {
     return 'href="' . urldecode($str) . '"';
