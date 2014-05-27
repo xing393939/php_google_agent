@@ -13,7 +13,7 @@ $start = isset($_GET['start']) ? $_GET['start'] : 0;
 $search = $resultStats = '';
 if($q) {
     include('simple_html_dom.php');
-    $url = 'https://www.google.com/#newwindow=1&safe=strict&q=';
+    $url = 'https://www.google.com/search?hl=en&source=hp&btnG=Google Search&gbv=2&q=';
     $ch = curl_init();
     $timeout = 5;
     curl_setopt ($ch, CURLOPT_URL, $url . $q . '&start=' . $start);
