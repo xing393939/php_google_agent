@@ -19,6 +19,8 @@ if ($q) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en; rv:1.9.2) Gecko/20100115 Firefox/3.6 GTBDFff GTB7.0');
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     $str = curl_exec($ch);
     curl_close($ch);
     $json = json_decode($str, true);
