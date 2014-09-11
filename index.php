@@ -21,7 +21,7 @@ if ($q) {
     $search = '';
     foreach ($json['responseData']['results'] as $item) {
         $search .= "<div><br /><a target='_blank' href='{$item['unescapedUrl']}'>{$item['title']}</a><br />";
-        $search .= "<input type='text' value='{$item['url']}' size='50' disabled /><br />";
+        $search .= "<input type='text' value='{$item['url']}' size='50' disabled style='border: none;' /><br />";
         $search .= "<!--{$item['titleNoFormatting']}-->{$item['content']}</div>";
     }
     $resultStats = $json['responseData']['cursor']['resultCount'] . ' results';
@@ -61,7 +61,8 @@ if ($q) {
     <body>
     <div style="margin:18px 0 0 20px">
         <div id="logo">
-            <a href="javascript:;" onclick="document.getElementById('more').style.display='block'" style="line-height: 55px; font-size: 42px">YIGE</a>
+            <a href="javascript:;" onclick="document.getElementById('more').style.display='block'"
+               style="line-height: 55px; font-size: 42px; text-decoration: none;">YIGE</a>
             <div id="resultStats"><?php echo $resultStats; ?></div>
         </div>
         <div id="more" style="margin:8px 0 12px 0; display: none;">
@@ -88,7 +89,7 @@ if ($q) {
                     $num = ($i - 1) * 10;
                     echo "<a href=\"index.php?q=$q&start=$num\">$i</a>";
                 }
-                $next = $start + 10;
+                $next = $start + 8;
                 echo "<a href=\"index.php?q=$q&start=$next\">下一页</a>";
             }
             ?>
