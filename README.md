@@ -1,7 +1,4 @@
-使用国外主机做google搜索站点[PHP版]
+php_google_agent
 ================
 
-### 使用说明
-首先需要一个国外主机，可以正常访问google的
-建立一个PHP的站点，把代码丢上去即可
-
+php_google_agent
